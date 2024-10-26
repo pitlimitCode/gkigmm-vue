@@ -90,6 +90,10 @@ const center = { lat: 40.689247, lng: -74.044502 }
     <div class="div4">
       <div class="widthRange flexRC centerH">
         <div class="flexMargin centerH centerV paddingTD">Media Sosial:</div>
+        <div class="flexMargin centerH centerV paddingTD" @click="rWA">
+            <img alt="Vue logo" src="../assets/waChn.png" class="iconSos">
+            (WhatsApp Channel) GKI GMM
+        </div>
         <div class="flexMargin centerH centerV paddingTD" @click="rYT">
             <img alt="Vue logo" src="../assets/yt.svg" class="iconSos">
             GKI GMM
@@ -215,7 +219,7 @@ th { background-color: #e65a6a }
   .iconLoc{ display:none; }
   .gmaps{ width: 70% }
 }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .flexRC{flex-direction: column;}
   .flexCR{flex-direction: row;}
   .widthRange{ padding: 1.5vh 0; }
@@ -255,6 +259,9 @@ th { background-color: #e65a6a }
 // }
 export default {
   methods: {
+    rWA() {
+      window.open('https://whatsapp.com/channel/0029VapHnUnL7UVaqcyDMB3v', '_blank');
+    },
     rYT() {
       window.open('https://www.youtube.com/@gkigmm', '_blank');
     },
