@@ -9,8 +9,8 @@ export default {
     return {
       jadwal: [],
       event: [],
-      cellValue: "week",
-      imageUrl: "https://lh3.googleusercontent.com/pw/AP1GczMNAZuPO-z9r9kKNGsHtDug8A7_njVzkqdY3P90iRXbtHlyZeqgRoYfO3u2hlnSgNc8t6LHZiOVpWmTbskxL9fSa4lYrjFIDP8PuRN1tbwD2hXeQYWsx95fzQzbvDa0D15irV5iBOfGDPl09vavsyYQ=w683-h512-s-no"
+      cellValue: "",
+      activeTab: 'kebaktian',
     }
   },
   methods: {
@@ -50,7 +50,7 @@ export default {
       window.open('https://www.instagram.com/koremgkigmm/?hl=id', '_blank');
     },
     rgithub() {
-      window.open('https://github.com/pitlimitCode?tab=repositories', '_blank');
+      window.open('https://github.com/pitlimitCode/gkigmm-vue', '_blank');
     },
     // rfigma() {
     //   window.open('https://www.figma.com/design/jPlJbEhQ13FtuS5bUCG2yg/GKI-GMM?node-id=0-1&node-type=canvas', '_blank');
@@ -72,6 +72,7 @@ export default {
 <template>
   <div class="page b1">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
+
     <header class="div1">
       <div class="widthRange centerH">
         <div class="centerH" style="width:30%;">
@@ -83,72 +84,97 @@ export default {
           <div class="centerH flexMargin">Griya Merpati Mas</div>
         </div>
       </div>
-
-      <!-- <div>
-        <h2>Kegiatan Besar</h2>
-        <ul>
-          <li v-for="(item, i) in event" :key="i">
-            {{ item.id }} - {{ item.title }} - {{ item.time }} - {{ item.img }} - {{ item.desc }} - {{ item.event }} -
-            {{ item.pass }} - {{ item.urlyt }} - {{ item.urlgdrv }} - {{ item.gdrv }}
-          </li>
-        </ul>
-      </div> -->
-
     </header>
-    <div class="div2">
-      
-      <div class="widthRange">
 
+    <div class="div2">
+
+      <!-- <div class="widthRange">
         <h3 class="centerH">Kebaktian Sepekan</h3>
         <h3 class="centerH">{{ cellValue }}</h3>
+      </div> -->
+      
+      <div class="tab-bar widthRange">
+        <button
+          :class="{ active: activeTab === 'kebaktian' }"
+          @click="activeTab = 'kebaktian'"
+        >
+          <div> Kebaktian <span v-if="activeTab === 'kebaktian'">Sepekan</span> </div>
+          <div v-if="activeTab === 'kebaktian'"> {{ cellValue }} </div>
+        </button>
+        <button
+          :class="{ active: activeTab === 'kegiatan' }"
+          @click="activeTab = 'kegiatan'"
+        >
+          Kegiatan
+        </button>
       </div>
-      <div class="centerH">
-        <table class="table">
-          <tr>
-            <th>Kebaktian</th>
-            <th>Hari</th>
-            <th>Jam</th>
-          </tr>
-          <!-- <tr>
-            <td>Umum 1</td>
-            <td>Minggu</td>
-            <td>07.00 WIB</td>
-          </tr>
-          <tr>
-            <td>Umum 2</td>
-            <td>Minggu</td>
-            <td>09.00 WIB</td>
-          </tr>
-          <tr>
-            <td>Pra-Remaja</td>
-            <td>Minggu</td>
-            <td>07.00 WIB</td>
-          </tr>
-          <tr>
-            <td>Sekolah Minggu</td>
-            <td>Minggu</td>
-            <td>09.00 WIB</td>
-          </tr>
-          <tr>
-            <td>Remaja-Pemuda</td>
-            <td>Minggu</td>
-            <td>11.00 WIB</td>
-          </tr>
-          <tr>
-            <td>Dewasa</td>
-            <td>Sabtu</td>
-            <td>16.00 WIB</td>
-          </tr> -->
-          <tr v-for="(item, i) in jadwal" :key="i"  @click="openInNewTab(item.img)" :style="{ cursor: item.img ? 'pointer' : 'default' }">
-            <td> {{ item.title }} </td>
-            <td> {{ item.day }} </td>
-            <td> {{ item.time }} </td>
-            <!-- {{ item.id }} - {{ item.title }} - {{ item.day }} - {{ item.time }} - {{ item.img }} - {{ item.desc }} - {{ item.week }} -->
-          </tr>
 
-        </table>
+      <div class="centerH">
+        <div v-if="activeTab === 'kebaktian'">
+          <table class="table">
+            <tr>
+              <th>Kebaktian</th>
+              <th>Hari</th>
+              <th>Jam</th>
+            </tr>
+            <!-- <tr>
+              <td>Umum 1</td>
+              <td>Minggu</td>
+              <td>07.00 WIB</td>
+            </tr>
+            <tr>
+              <td>Umum 2</td>
+              <td>Minggu</td>
+              <td>09.00 WIB</td>
+            </tr>
+            <tr>
+              <td>Pra-Remaja</td>
+              <td>Minggu</td>
+              <td>07.00 WIB</td>
+            </tr>
+            <tr>
+              <td>Sekolah Minggu</td>
+              <td>Minggu</td>
+              <td>09.00 WIB</td>
+            </tr>
+            <tr>
+              <td>Remaja-Pemuda</td>
+              <td>Minggu</td>
+              <td>11.00 WIB</td>
+            </tr>
+            <tr>
+              <td>Dewasa</td>
+              <td>Sabtu</td>
+              <td>16.00 WIB</td>
+            </tr> -->
+            <tr v-for="(item, i) in jadwal" :key="i"  @click="openInNewTab(item.img)" :style="{ cursor: item.img ? 'pointer' : 'default' }">
+              <td> {{ item.title }} </td>
+              <td> {{ item.day }} </td>
+              <td> {{ item.time }} </td>
+              <!-- {{ item.id }} - {{ item.title }} - {{ item.day }} - {{ item.time }} - {{ item.img }} - {{ item.desc }} - {{ item.week }} -->
+              <!-- img	yt	gdrv	title	day	time	pass -->
+            </tr>
+          </table>
+        </div>
+        <div v-else>
+          <table>
+            <tr>
+              <th>Kegiatan</th>
+              <th>Hari</th>
+              <th>Jam</th>
+            </tr>
+            <tr v-for="(item, i) in event" :key="i"  @click="openInNewTab(item.img)" :style="{ cursor: item.img ? 'pointer' : 'default' }">
+              <td> {{ item.title }} </td>
+              <td> {{ item.day }} </td>
+              <td> {{ item.time }} </td>
+              <!-- {{ item.id }} - {{ item.title }} - {{ item.day }} - {{ item.time }} - {{ item.img }} - {{ item.desc }} - {{ item.week }} -->
+            </tr>
+          </table>
+        </div>
       </div>
+
     </div>
+
     <div class="div3">
       <div class="widthRange flexRC centerH centerV">
         <div class="address">
@@ -160,6 +186,7 @@ export default {
             <div class="flexMargin">Kecamatan Periuk,</div>
             <div class="flexMargin">Kota Tangerang,</div>
             <div class="flexMargin">Provinsi Banten</div>
+            <div class="flexMargin">15133</div>
           </div>
         </div>
         <div class="gmaps bc4 centerV centerH">
@@ -189,7 +216,7 @@ export default {
         <div class="flexMargin centerH centerV paddingTD">Media Sosial:</div>
         <div class="flexMargin centerH centerV paddingTD" @click="rWA">
           <img alt="Vue logo" src="../assets/waChn.png" class="iconSos">
-          (WhatsApp Channel) GKI GMM
+          GKI GMM (WhatsApp Channel)
         </div>
         <div class="flexMargin centerH centerV paddingTD" @click="rYT">
           <img alt="Vue logo" src="../assets/yt.svg" class="iconSos">
@@ -207,11 +234,11 @@ export default {
     </div>
     <footer class="div5">
       <div class="widthRange t2 flexRC centerH centerV">
-        <div class="flexMargin centerH" @click="toTop">Unofficial Webiste GKI GMM</div>
+        <div class="flexMargin centerH" @click="toTop">Unofficial Webiste GKI GMM.</div>
         <div class="centerH centerV" @click="rgithub">
-          ( Creator:
+          created by:
           <img alt="Vue logo" src="../assets/github.svg" class="iconSos">
-          pitlimitcode )
+          pitlimitcode
         </div>
         <!-- <div class="centerH centerV" @click="rfigma">
           <img alt="Vue logo" src="../assets/figma.svg" class="iconSos">
@@ -288,7 +315,7 @@ table {
   border-collapse: collapse;
   border: 1px solid #7099c5;
   margin: 20px;
-  width: 500px;
+  /* min-width: 500px; */
 }
 th, td {
   padding: 8px;
@@ -306,6 +333,27 @@ th { background-color: #e65a6a }
 }
 .paddingTD{ padding: 5px 0; }
 
+/* css jiplak kode */
+.tab-bar {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.tab-bar button {
+  padding: 0.5rem 1rem;
+  border: none;
+  background: #eee;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.tab-bar button.active {
+  background: #333;
+  color: white;
+}
+/*  */
+
 @media (max-width: 750px) { 
   .page{font-size: 11px;}
   .logoImg {width: 40px;}
@@ -320,6 +368,12 @@ th { background-color: #e65a6a }
   .flexRC{flex-direction: column;}
   .flexCR{flex-direction: row;}
   .widthRange{ padding: 1.5vh 0; }
+  .table{
+    min-width: 200px;
+    /* max-width: 100hv; */
+    /* font-size: 10px; */
+    max-width: 80%;
+  }
   .address{ 
     width: 100%;
     margin-bottom: 1.5vh;
