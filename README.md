@@ -9,3 +9,5 @@ npm run serve
 ```
 npm run build
 ```
+
+[Figma](https://www.figma.com/design/jPlJbEhQ13FtuS5bUCG2yg/GKI-GMM?node-id=0-1&p=f&t=xyMWG6Gy9KBOH0LY-0)
