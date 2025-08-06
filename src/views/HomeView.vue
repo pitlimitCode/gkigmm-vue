@@ -88,11 +88,6 @@ export default {
 
     <div class="div2">
 
-      <!-- <div class="widthRange">
-        <h3 class="centerH">Kebaktian Sepekan</h3>
-        <h3 class="centerH">{{ cellValue }}</h3>
-      </div> -->
-      
       <div class="tab-bar widthRange">
         <button
           :class="{ active: activeTab === 'kebaktian' }"
@@ -111,7 +106,8 @@ export default {
 
       <div class="centerH">
         <div v-if="activeTab === 'kebaktian'">
-          <table class="table">
+          <!-- <table class="table"> -->
+          <table>
             <tr>
               <th>Kebaktian</th>
               <th>Hari</th>
@@ -157,16 +153,31 @@ export default {
           </table>
         </div>
         <div v-else>
+          <!-- <table class="table"> -->
           <table>
             <tr>
               <th>Kegiatan</th>
               <th>Hari</th>
               <th>Jam</th>
+              <th>Dokumentasi</th>
             </tr>
-            <tr v-for="(item, i) in event" :key="i"  @click="openInNewTab(item.img)" :style="{ cursor: item.img ? 'pointer' : 'default' }">
+            <tr v-for="(item, i) in event" :key="i">
               <td> {{ item.title }} </td>
               <td> {{ item.day }} </td>
               <td> {{ item.time }} </td>
+              <td>
+                <span v-if="item.img" @click="openInNewTab(item.img)" :style="{ cursor: item.img ? 'pointer' : 'default' }" >
+                  Fly
+                  &nbsp;
+                </span>
+                <span v-if="item.yt" @click="openInNewTab(item.yt)" :style="{ cursor: item.yt ? 'pointer' : 'default' }">
+                  Yt
+                  &nbsp;
+                </span>
+                <span v-if="item.gdrv" @click="openInNewTab(item.gdrv)" :style="{ cursor: item.gdrv ? 'pointer' : 'default' }">
+                  Img
+                </span>
+              </td>
               <!-- {{ item.id }} - {{ item.title }} - {{ item.day }} - {{ item.time }} - {{ item.img }} - {{ item.desc }} - {{ item.week }} -->
             </tr>
           </table>
@@ -199,15 +210,6 @@ export default {
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade">
           </iframe>
-          <!-- Google maps (coming soon) -->
-          <!-- <GoogleMap
-            api-key="YOUR_GOOGLE_MAPS_API_KEY"
-            style="width: 100%; height: 500px"
-            :center="center"
-            :zoom="15"
-          >
-          <Marker :options="{ position: center }" />
-          </GoogleMap> -->
         </div>
       </div>
     </div>
@@ -342,15 +344,17 @@ th { background-color: #e65a6a }
 }
 .tab-bar button {
   padding: 0.5rem 1rem;
-  border: none;
-  background: #eee;
+  border: 2px solid #e65a6a;
+  background: transparent;
   border-radius: 8px;
   cursor: pointer;
   font-weight: bold;
+  width: 280px;
+  height: 60px;
 }
 .tab-bar button.active {
-  background: #333;
-  color: white;
+  background: #e65a6a;
+  color: #7099c5;
 }
 /*  */
 
