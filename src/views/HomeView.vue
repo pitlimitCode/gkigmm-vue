@@ -70,18 +70,21 @@ export default {
 </script> 
 
 <template>
-  <div class="page b1">
+  <div class="page">
     <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
 
     <header class="div1">
       <div class="widthRange centerH">
-        <div class="centerH" style="width:30%;">
+        <div class="centerH" style="width:25%;">
           <img alt="Vue logo" src="../assets/gki2.png" class="logoImg">
           <!-- Logo GKI -->
         </div>
-        <div style="width:70%;" class="flex flexRC centerH centerV title">
+        <div style="width:70%;" class="flex flexRC centerH centerV title t1">
           <div class="centerH flexMargin">Gereja Kristen Indonesia</div>
           <div class="centerH flexMargin">Griya Merpati Mas</div>
+        </div>
+        <div class="centerH" style="width:25%;">
+          <!-- Logo GKI -->
         </div>
       </div>
     </header>
@@ -108,7 +111,7 @@ export default {
         <div v-if="activeTab === 'kebaktian'">
           <!-- <table class="table"> -->
           <table>
-            <tr>
+            <tr class="t1">
               <th>Kebaktian</th>
               <th>Hari</th>
               <th>Jam</th>
@@ -144,9 +147,9 @@ export default {
               <td>16.00 WIB</td>
             </tr> -->
             <tr v-for="(item, i) in jadwal" :key="i"  @click="openInNewTab(item.img)" :style="{ cursor: item.img ? 'pointer' : 'default' }">
-              <td> {{ item.title }} </td>
-              <td> {{ item.day }} </td>
-              <td> {{ item.time }} </td>
+              <td class="t2"> {{ item.title }} </td>
+              <td class="t2"> {{ item.day }} </td>
+              <td class="t2"> {{ item.time }} </td>
               <!-- {{ item.id }} - {{ item.title }} - {{ item.day }} - {{ item.time }} - {{ item.img }} - {{ item.desc }} - {{ item.week }} -->
               <!-- img	yt	gdrv	title	day	time	pass -->
             </tr>
@@ -155,26 +158,26 @@ export default {
         <div v-else>
           <!-- <table class="table"> -->
           <table>
-            <tr>
+            <tr class="t1">
               <th>Kegiatan</th>
               <th>Hari</th>
               <th>Jam</th>
               <th>Dokumentasi</th>
             </tr>
             <tr v-for="(item, i) in event" :key="i">
-              <td> {{ item.title }} </td>
-              <td> {{ item.day }} </td>
-              <td> {{ item.time }} </td>
-              <td>
-                <span v-if="item.img" @click="openInNewTab(item.img)" :style="{ cursor: item.img ? 'pointer' : 'default' }" >
+              <td class="t2"> {{ item.title }} </td>
+              <td class="t2"> {{ item.day }} </td>
+              <td class="t2"> {{ item.time }} </td>
+              <td class="t3">
+                <span v-if="item.img" class="cursorPointer" @click="openInNewTab(item.img)" :style="{ cursor: item.img ? 'pointer' : 'default' }" >
                   Fly
                   &nbsp;
                 </span>
-                <span v-if="item.yt" @click="openInNewTab(item.yt)" :style="{ cursor: item.yt ? 'pointer' : 'default' }">
+                <span v-if="item.yt" class="cursorPointer" @click="openInNewTab(item.yt)" :style="{ cursor: item.yt ? 'pointer' : 'default' }">
                   Yt
                   &nbsp;
                 </span>
-                <span v-if="item.gdrv" @click="openInNewTab(item.gdrv)" :style="{ cursor: item.gdrv ? 'pointer' : 'default' }">
+                <span v-if="item.gdrv" class="cursorPointer" @click="openInNewTab(item.gdrv)" :style="{ cursor: item.gdrv ? 'pointer' : 'default' }">
                   Img
                 </span>
               </td>
@@ -188,7 +191,7 @@ export default {
 
     <div class="div3">
       <div class="widthRange flexRC centerH centerV">
-        <div class="address">
+        <div class="address t1">
           <div class="addrMain">
             <img alt="Vue logo" src="../assets/loc.svg" class="iconLoc">
             Blok C31 Kavling 11-14,
@@ -205,7 +208,7 @@ export default {
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6752833155288!2d106.5777468!3d-6.1742099999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ffa89c40930d%3A0xf098ab033c0b864b!2sGKI%20Griya%20Merpati%20Mas!5e0!3m2!1sid!2sid!4v1753778696723!5m2!1sid!2sid"
             width="100%"
             height="100%"
-            style="border:0;"
+            style="border:0; border-radius: 10px;"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade">
@@ -215,30 +218,30 @@ export default {
     </div>
     <div class="div4">
       <div class="widthRange flexRC centerH">
-        <div class="flexMargin centerH centerV paddingTD">Media Sosial:</div>
-        <div class="flexMargin centerH centerV paddingTD" @click="rWA">
+        <div class="flexMargin centerH centerV paddingTD t2">Media Sosial:</div>
+        <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="rWA">
           <img alt="Vue logo" src="../assets/waChn.png" class="iconSos">
           GKI GMM (WhatsApp Channel)
         </div>
-        <div class="flexMargin centerH centerV paddingTD" @click="rYT">
+        <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="rYT">
           <img alt="Vue logo" src="../assets/yt.svg" class="iconSos">
           GKI GMM
         </div>
-        <div class="flexMargin centerH centerV paddingTD" @click="rigpemuda">
+        <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="rigpemuda">
           <img alt="Vue logo" src="../assets/ig.svg" class="iconSos">
           Komisi Pemuda
         </div>
-        <div class="flexMargin centerH centerV paddingTD" @click="rigremaja">
+        <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="rigremaja">
           <img alt="Vue logo" src="../assets/ig.svg" class="iconSos">
           Komisi Remaja
         </div>
       </div>
     </div>
     <footer class="div5">
-      <div class="widthRange t2 flexRC centerH centerV">
-        <div class="flexMargin centerH" @click="toTop">Unofficial Webiste GKI GMM.</div>
-        <div class="centerH centerV" @click="rgithub">
-          created by:
+      <div class="widthRange flexRC centerH centerV">
+        <div class="flexMargin centerH cursorPointer t1" @click="toTop">Unofficial Webiste GKI GMM.</div>
+        <div class="centerH centerV cursorPointer devGithub" @click="rgithub">
+          Dev by:
           <img alt="Vue logo" src="../assets/github.svg" class="iconSos">
           pitlimitcode
         </div>
@@ -297,36 +300,40 @@ a:active {
   max-width: 1200px;
 }
 
+.cursorPointer {
+  cursor: pointer;
+}
+
 .div1{ background-color:#e65a6a; }
-/* .div2{ background-color:#e65a6a; } */
+.div2{ background-color:#fbfaeb; }
 .div3{ background-color:#e65a6a; }
-/* .div4{ background-color:#e65a6a; } */
+.div4{ background-color:#fbfaeb; }
 .div5{ background-color:#7099c5; }
 
 .page{
   /* height: 100vh; */
-  color:#7099c5;
+  /* color:#7099c5; */
   font-size: 14px;
 }
 .logoImg {width: 60px;}
 .title{
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
 }
 table {
   border-collapse: collapse;
-  border: 1px solid #7099c5;
+  border: 1px solid #e65a6a;
   margin: 20px;
   /* min-width: 500px; */
 }
 th, td {
   padding: 8px;
   text-align: center;
-  border-bottom: 1px solid #7099c5;
+  border-bottom: 1px solid #e65a6a;
 }
 th { background-color: #e65a6a }
 .address{ width: 30% }
-.gmaps{ width: 70%; height:200px }
+.gmaps{ width: 70%; height:200px; border: 0; border-radius: 10px; }
 /* .icon{ width: 12px; } */
 .iconLoc{ width: 14px; }
 .iconSos{ 
@@ -351,11 +358,21 @@ th { background-color: #e65a6a }
   font-weight: bold;
   width: 280px;
   height: 60px;
+  color: #7099c5;
 }
 .tab-bar button.active {
   background: #e65a6a;
-  color: #7099c5;
+  color: #fbfaeb;
+  cursor: default;
 }
+.devGithub {
+  background-color: #fbfaeb;
+  padding: 2px 5px;
+  border-radius: 3px;
+  color: #7099c5;
+  cursor: pointer;
+}
+
 /*  */
 
 @media (max-width: 750px) { 
