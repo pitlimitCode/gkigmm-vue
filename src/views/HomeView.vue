@@ -52,6 +52,15 @@ export default {
     rgithub() {
       window.open('https://github.com/pitlimitCode/gkigmm-vue', '_blank');
     },
+    roffgmm() {
+      window.open('https://www.gkigriyamerpatimas.or.id/', '_blank');
+    },
+    rfb() {
+      window.open('https://www.facebook.com/gki.gmm', '_blank');
+    },
+    rigasm() {
+      window.open('https://www.instagram.com/sekolahminggugkigmm', '_blank');
+    },
     // rfigma() {
     //   window.open('https://www.figma.com/design/jPlJbEhQ13FtuS5bUCG2yg/GKI-GMM?node-id=0-1&node-type=canvas', '_blank');
     // },
@@ -109,54 +118,25 @@ export default {
 
       <div class="centerH">
         <div v-if="activeTab === 'kebaktian'">
-          <!-- <table class="table"> -->
           <table>
             <tr class="t1">
               <th>Kebaktian</th>
               <th>Hari</th>
               <th>Jam</th>
             </tr>
-            <!-- <tr>
-              <td>Umum 1</td>
-              <td>Minggu</td>
-              <td>07.00 WIB</td>
-            </tr>
-            <tr>
-              <td>Umum 2</td>
-              <td>Minggu</td>
-              <td>09.00 WIB</td>
-            </tr>
-            <tr>
-              <td>Pra-Remaja</td>
-              <td>Minggu</td>
-              <td>07.00 WIB</td>
-            </tr>
-            <tr>
-              <td>Sekolah Minggu</td>
-              <td>Minggu</td>
-              <td>09.00 WIB</td>
-            </tr>
-            <tr>
-              <td>Remaja-Pemuda</td>
-              <td>Minggu</td>
-              <td>11.00 WIB</td>
-            </tr>
-            <tr>
-              <td>Dewasa</td>
-              <td>Sabtu</td>
-              <td>16.00 WIB</td>
-            </tr> -->
-            <tr v-for="(item, i) in jadwal" :key="i"  @click="openInNewTab(item.img)" :style="{ cursor: item.img ? 'pointer' : 'default' }">
+            <!-- <tr v-for="(item, i) in jadwal" :key="i"  @click="openInNewTab(item.img)" :style="{ cursor: item.img ? 'pointer' : 'default' }">
               <td class="t2"> {{ item.title }} </td>
               <td class="t2"> {{ item.day }} </td>
               <td class="t2"> {{ item.time }} </td>
-              <!-- {{ item.id }} - {{ item.title }} - {{ item.day }} - {{ item.time }} - {{ item.img }} - {{ item.desc }} - {{ item.week }} -->
-              <!-- img	yt	gdrv	title	day	time	pass -->
+            </tr> -->
+            <tr v-for="(item, i) in jadwal" :key="i"  @click="openInNewTab(item.img)" :class="( item.img ? 'cursorPointer t3' : 'default' )">
+              <td> {{ item.title }} </td>
+              <td> {{ item.day }} </td>
+              <td> {{ item.time }} </td>
             </tr>
           </table>
         </div>
         <div v-else>
-          <!-- <table class="table"> -->
           <table>
             <tr class="t1">
               <th>Kegiatan</th>
@@ -181,7 +161,6 @@ export default {
                   Img
                 </span>
               </td>
-              <!-- {{ item.id }} - {{ item.title }} - {{ item.day }} - {{ item.time }} - {{ item.img }} - {{ item.desc }} - {{ item.week }} -->
             </tr>
           </table>
         </div>
@@ -218,13 +197,21 @@ export default {
     </div>
     <div class="div4">
       <div class="widthRange flexRC centerH">
-        <div class="flexMargin centerH centerV paddingTD t2">Media Sosial:</div>
+        <!-- <div class="flexMargin centerH centerV paddingTD t2">Media Sosial:</div> -->
+        <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="roffgmm">
+          <img alt="Vue logo" src="../assets/gki2.png" class="iconSos">
+          Website Resmi GKI GMM
+        </div>
         <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="rWA">
           <img alt="Vue logo" src="../assets/waChn.png" class="iconSos">
           GKI GMM (WhatsApp Channel)
         </div>
         <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="rYT">
           <img alt="Vue logo" src="../assets/yt.svg" class="iconSos">
+          GKI GMM
+        </div>
+        <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="rfb">
+          <img alt="Vue logo" src="../assets/fb.svg" class="iconSos">
           GKI GMM
         </div>
         <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="rigpemuda">
@@ -234,6 +221,10 @@ export default {
         <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="rigremaja">
           <img alt="Vue logo" src="../assets/ig.svg" class="iconSos">
           Komisi Remaja
+        </div>
+        <div class="flexMargin centerH centerV paddingTD t3 cursorPointer" @click="rigasm">
+          <img alt="Vue logo" src="../assets/ig.svg" class="iconSos">
+          Anak Sekolah Minggu
         </div>
       </div>
     </div>
@@ -368,6 +359,7 @@ th { background-color: #e65a6a }
 .devGithub {
   background-color: #fbfaeb;
   padding: 2px 5px;
+  margin: 2px 0;
   border-radius: 3px;
   color: #7099c5;
   cursor: pointer;
