@@ -53,7 +53,7 @@ export default {
       window.open('https://github.com/pitlimitCode/gkigmm-vue', '_blank');
     },
     roffgmm() {
-      window.open('https://www.gkigriyamerpatimas.or.id/', '_blank');
+      window.open('https://www.gkigmm.or.id/', '_blank');
     },
     rfb() {
       window.open('https://www.facebook.com/gki.gmm', '_blank');
