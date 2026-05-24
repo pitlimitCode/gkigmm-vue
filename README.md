@@ -24,5 +24,5 @@ npm run build
 * [Spreadsheet Update Data](https://docs.google.com/spreadsheets/d/1H1z7u2nq7ecGpQbZ0RCOChOhtwhGJlf7xKWn4G_Nl5E/edit?gid=0#gid=0)
 
 ### GKI GMM link
-* [Official](https://www.gkigriyamerpatimas.or.id/)
+* [Official](https://www.gkigmm.or.id/)
 * [Unofficial (This project)](https://beta-gkigmm.vercel.app/)
